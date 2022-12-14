@@ -5,9 +5,9 @@ Any user has id, name, username, email and phone. The username and email should 
 
 ### Running service
 
-- cd user
-- docker-compose up -d so mysql is up and running
-- run services with gradle: './gradlew bootRun'
+- cd user-service
+-  `docker-compose up -d` so mysql is up and running
+- run services with gradle: `./gradlew bootRun --args='--spring.profiles.active=local'`
 
 ### Testing service
 

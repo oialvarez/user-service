@@ -1,6 +1,7 @@
 package org.alviel.user.adapter;
 
-import lombok.RequiredArgsConstructor;
+import javax.naming.CommunicationException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -10,10 +11,11 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 @Component
-@RequiredArgsConstructor
 public class ItemAdapterImpl implements ItemAdapter {
 
+    @Autowired
     private Cipher cipher;
+    @Autowired
     private RestTemplate restTemplate;
 
     @Override
@@ -26,6 +28,7 @@ public class ItemAdapterImpl implements ItemAdapter {
                 cipher.encrypt(id));
             return exchange.getBody();
         } catch (Exception e) {
+            e.printStackTrace();
             throw new ExternalCommunicationException("Error found getting response from external API", e);
         }
     }

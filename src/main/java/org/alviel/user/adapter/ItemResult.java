@@ -15,13 +15,13 @@ public class ItemResult {
     }
 
     @Data
-    private static class Result {
+    public static class Result {
 
         private List<Item> items;
     }
 
     @Data
-    private static class Item {
+    public static class Item {
 
         private String name;
         private Detail detail;
